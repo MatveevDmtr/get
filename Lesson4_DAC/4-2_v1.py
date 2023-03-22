@@ -25,7 +25,17 @@ try:
         
             gp.output(dac, b)
 
-            time.sleep(0.5)
+            time.sleep(0.01)
+        
+        for n in range(255, -1, -1):
+        
+            print("Expected voltage: ", round(n / 255 * 3.1233, 2), "V")
+
+            b = [int(i) for i in list(convert_10_to_2(int(n)))]
+        
+            gp.output(dac, b)
+
+            time.sleep(0.01)
 
 
 except Exception as e:
