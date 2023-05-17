@@ -30,9 +30,9 @@ axes.minorticks_on()
 axes.grid(which='major', color = 'k')
 axes.grid(which='minor', color = 'lightgray')
 
-axes.set_title("The process of charging a capacitor in RC-module", loc = "center", fontsize=30)
+axes.set_title("The process of charging a capacitor in RC-module", loc = "center", fontsize=20)
 
-axes.plot(time_arr, data_arr, c='red', linewidth=1, label="V(t)")
+axes.plot(time_arr, data_arr, c='red', linewidth=1, label="V(t)", marker='o', markevery = 20)
 axes.arrow(time_arr.max(), 3.3, 1, 0.1)
 axes.scatter(time_arr[0:num_measures:20], data_arr[0:num_measures:20], marker='s', c='red', s=10)
 axes.legend(shadow = False, loc = 'right', fontsize = 30)
