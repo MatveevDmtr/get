@@ -21,11 +21,11 @@ def adc_binsearch():
     for i in range(7, -1, -1):
         val += 2 ** i
         curr_bin_val = convert_10_to_2(val)
-        comp_val = gp.input(comp)
 
         gp.output(dac, curr_bin_val)
-        time.sleep(0.05)
+        time.sleep(0.01)
 
+        comp_val = gp.input(comp)
         if not(comp_val):
             val -= 2 ** i
     return val
@@ -48,7 +48,7 @@ def new_adc():
     for i in range (0, 8):
         mass = 7 - i
         gp.output(dac[i], 1)
-        time.sleep(0.01)
+        time.sleep(0.05)
         
         compValue = gp.input(comp)
         if compValue == 0:
@@ -66,7 +66,7 @@ try:
 
     time_start = time.time()
     while (value / 255 < 0.90):
-        value = adc()
+        value = adc_binsearch()
         if (value):
             print(value)
             num_measures += 1
@@ -76,7 +76,7 @@ try:
     while True:
         if value and value / 255 < 0.08:
             break
-        value = adc()
+        value = adc_binsearch()
         if (value):
             print(value)
             num_measures += 1
